@@ -1,10 +1,10 @@
-module caddy-container
+module github.com/pratyay360/caddy-container/v2
 
 go 1.26.2
 
 require (
 	github.com/caddyserver/caddy/v2 v2.11.2
-	go.uber.org/zap v1.27.1
+	go.uber.org/zap v1.28.0
 )
 
 require (
