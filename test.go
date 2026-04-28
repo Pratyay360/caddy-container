@@ -1,4 +1,4 @@
-package main
+package ""
 
 import (
 	"context"
@@ -7,10 +7,11 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"os"
 )
 
 func main() {
-	sockets := "/run/user/1000/podman/podman.sock"
+	sockets := "/run/user/" + os.Getenv("UID") + "/podman/podman.sock"
 
 	httpc := http.Client{
 		Transport: &http.Transport{
@@ -42,6 +43,6 @@ func main() {
 
 	for _, c := range res {
 		fmt.Println(c["Names"])
-		fmt.Println(c["Ports"].Interface()["PrivatePort"])
+		fmt.Println(c["Ports"]["PrivatePort"])
 	}
 }
